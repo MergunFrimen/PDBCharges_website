@@ -114,6 +114,7 @@ export default function Home() {
       <div className="row">
         <ExampleCard
           title="Phospholipase inhibited by ibuprofen"
+          code="2pws"
           image="../assets/p_glycoprotein.png"
         >
           <small>
@@ -147,6 +148,7 @@ export default function Home() {
 
         <ExampleCard
           title="Carbohydrate binding lectin"
+          code="1uzv"
           image="../assets/p_glycoprotein.png"
         >
           <small>
@@ -190,6 +192,7 @@ export default function Home() {
 
         <ExampleCard
           title="Potassium channel"
+          code="6wlv"
           image="../assets/p_glycoprotein.png"
         >
           <small>

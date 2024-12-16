@@ -1,16 +1,20 @@
 import { useState, useEffect, ReactNode } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ExampleCardProps {
   title: string;
+  code: string;
   image: string;
   children?: ReactNode | ReactNode[];
 }
 
 export default function ExampleCard({
   title,
+  code,
   image,
   children,
 }: ExampleCardProps) {
+  const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
@@ -22,6 +26,10 @@ export default function ExampleCard({
     loadImage();
   }, [image]);
 
+  function handleClick() {
+    navigate(`/results/${code}`);
+  }
+
   return (
     <div className="col-lg-4 pl-0">
       <div className="col">
@@ -32,17 +40,15 @@ export default function ExampleCard({
       </div>
       <div className="col mt-3 text-justify">{children}</div>
       <div className="col text-center mt-3">
-        <form>
-          <input type="hidden" name="code" value="6wlv1uzv" />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            name="action"
-            value="calculate charges"
-          >
-            View example
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          name="action"
+          value="calculate charges"
+          onClick={handleClick}
+        >
+          View example
+        </button>
       </div>
     </div>
   );

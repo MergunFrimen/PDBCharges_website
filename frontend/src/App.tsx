@@ -7,6 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import Results from "./pages/Results";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Outlet />}>
           <Route index element={<Home />} />
-          <Route path="results/:pdbCode" element={<>TODO</>} />
+          <Route path="results/:code" element={<Results />} />
           <Route path="results" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFound />} />
         </Route>
