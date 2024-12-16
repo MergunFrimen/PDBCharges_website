@@ -4,12 +4,14 @@ import Header from "./Header";
 
 export function Layout() {
   return (
-    <div className="container mx-auto min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-      <Footer />
+    <div className="container mx-auto p-10">
+      <div className="flex flex-col gap-y-10">
+        <Header />
+        <main className="">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
