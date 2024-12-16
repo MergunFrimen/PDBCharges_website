@@ -1,0 +1,14 @@
+[
+    {
+        "chain_id": "A",
+        "residue_id": 1,
+        "residue_name": "ABU",
+        "warning": "Atom(s) O were added by PDBFixer. Charge calculation failed for atom(s) O."
+    },
+    {
+        "chain_id": "A",
+        "residue_id": 7,
+        "residue_name": "ACA",
+        "warning": "Atom(s) O were added by PDBFixer. Mapping of formal charges from Dimorphite-DL and CCD to residue failed and therefore the residue is left neutral."
+    }
+]
