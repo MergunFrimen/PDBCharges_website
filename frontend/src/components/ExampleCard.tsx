@@ -1,54 +1,49 @@
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Button } from "./ui/button";
+import { useState, useEffect, ReactNode } from "react";
 
 interface ExampleCardProps {
   title: string;
-  description: string;
-  pdbCode: string;
-  imageUrl: string;
+  image: string;
+  children?: ReactNode | ReactNode[];
 }
 
 export default function ExampleCard({
   title,
-  description,
-  pdbCode,
-  imageUrl,
+  image,
+  children,
 }: ExampleCardProps) {
-  const navigate = useNavigate();
+  const [imageSrc, setImageSrc] = useState("");
+
+  useEffect(() => {
+    const loadImage = async () => {
+      const img = await import(image);
+      setImageSrc(img.default);
+    };
+
+    loadImage();
+  }, [image]);
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="">
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="h-full">
-        <div className="aspect-square bg-gray-100 mb-4 flex items-center justify-center">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="h-48 w-auto object-contain"
-          />
-        </div>
-        <CardDescription className="text-sm text-gray-600 mb-4">
-          {description}
-        </CardDescription>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button
-          className="w-full"
-          onClick={() => navigate(`/results/${pdbCode}`)}
-        >
-          {title}
-        </Button>
-      </CardFooter>
-    </Card>
+    <div className="col-lg-4 pl-0">
+      <div className="col">
+        <strong>{title}</strong>
+      </div>
+      <div className="col text-align mt-3">
+        <img src={imageSrc} alt="P-glycoprotein" style={{ height: "200px" }} />
+      </div>
+      <div className="col mt-3 text-justify">{children}</div>
+      <div className="col text-center mt-3">
+        <form>
+          <input type="hidden" name="code" value="6wlv1uzv" />
+          <button
+            type="submit"
+            className="btn btn-primary"
+            name="action"
+            value="calculate charges"
+          >
+            View example
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
