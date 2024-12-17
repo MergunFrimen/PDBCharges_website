@@ -1,9 +1,22 @@
 import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Logo from "../components/Logo";
+import MolstarViewer from "../components/MolstarViewer";
+import { useMolstar } from "../contexts/MolstarContext";
+import { useBehavior } from "../hooks/useBehavior";
+import { View } from "../models/MolstarViewerModel";
 
 export default function Results() {
   const { code } = useParams();
+  const { viewer } = useMolstar();
+  const [currentView] = useBehavior(viewer.state.currentView);
+
+  function handleViewChange(value: View) {
+    console.log("view", value);
+    viewer.state.currentView.next(value);
+  }
+
+  if (!code) return <></>;
 
   return (
     <div className="container mt-3 p-3">
@@ -44,7 +57,8 @@ export default function Results() {
                   name="view"
                   id="view_cartoon"
                   value="Cartoon"
-                  checked
+                  onChange={() => handleViewChange("cartoon")}
+                  checked={currentView === "cartoon"}
                 />
                 <label className="form-check-label" htmlFor="view_cartoon">
                   Cartoon
@@ -60,6 +74,8 @@ export default function Results() {
                   name="view"
                   id="view_surface"
                   value="Surface"
+                  onChange={() => handleViewChange("surface")}
+                  checked={currentView === "surface"}
                 />
                 <label className="form-check-label" htmlFor="view_surface">
                   Surface
@@ -75,6 +91,8 @@ export default function Results() {
                   name="view"
                   id="view_bas"
                   value="Ball & Stick"
+                  onChange={() => handleViewChange("ball-and-stick")}
+                  checked={currentView === "ball-and-stick"}
                 />
                 <label className="form-check-label" htmlFor="view_bas">
                   Ball & Stick
@@ -166,8 +184,10 @@ export default function Results() {
       </div>
       <hr />
       <div className="row px-3">
-        <div className="col">
-          <div id="root"></div>
+        <div className="col px-0">
+          <div id="root">
+            <MolstarViewer pdbId={code} />
+          </div>
         </div>
       </div>
       <hr />

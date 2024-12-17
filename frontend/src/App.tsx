@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Results from "./pages/Results";
+import { MolstarProvider } from "./contexts/MolstarContext";
 
 export default function App() {
   return (
@@ -15,8 +16,17 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Outlet />}>
           <Route index element={<Home />} />
-          <Route path="results/:code" element={<Results />} />
-          <Route path="results" element={<Navigate to="/" replace />} />
+          <Route
+            path="results"
+            element={
+              <MolstarProvider>
+                <Outlet />
+              </MolstarProvider>
+            }
+          >
+            <Route index element={<Navigate to="/" replace />} />
+            <Route path=":code" element={<Results />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
