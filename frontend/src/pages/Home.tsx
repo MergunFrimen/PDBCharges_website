@@ -1,87 +1,78 @@
 import ElixirSection from "../components/ElixirSection";
-import Footer from "../components/Footer";
 import Logo from "../components/Logo";
-import cardPlaceholder from "../assets/p_glycoprotein.png";
 import ExampleCard from "../components/ExampleCard";
 
 export default function Home() {
   return (
-    <div className="container p-3">
-      <div className="d-none mt-3 d-lg-block"></div>
+    <>
+      <div className="col pl-0">
+        <strong>
+          <Logo />
+        </strong>{" "}
+        is a web application providing partial atomic charges of protein
+        structures from the{" "}
+        <a
+          href="https://onlinelibrary.wiley.com/doi/full/10.1002/pro.3289"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Protein Data Bank
+        </a>
+        . The charges are computed by the{" "}
+        <a
+          href="https://pubs.acs.org/doi/10.1021/acs.jctc.7b00118"
+          target="_blank"
+          rel="noreferrer"
+        >
+          semiempirical quantum mechanical methods GFN1-xTB
+        </a>{" "}
+        and reproduce the PBE0/TZVP/CM5 charges. Before computation of the
+        charges, hydrogens are added to the structure by{" "}
+        <a
+          href="https://almob.biomedcentral.com/articles/10.1186/s13015-022-00215-x"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Hydride
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.6b00049"
+          target="_blank"
+          rel="noreferrer"
+        >
+          MoleculeKit
+        </a>{" "}
+        at pH 7.2. The positions of the added hydrogens are optimized using the{" "}
+        <a
+          href="https://onlinelibrary.wiley.com/doi/full/10.1002/anie.202004239"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GFN-FF force-field
+        </a>
+        . The details about the methodology and usage are described in the{" "}
+        <a
+          href="https://github.com/sb-ncbr/PDBCharges_website/wiki"
+          target="_blank"
+          rel="noreferrer"
+        >
+          manual
+        </a>
+        . This website is free and open to all users and there is no login
+        requirement. Source codes are freely available at{" "}
+        <a
+          href="https://github.com/sb-ncbr/PDBCharges_website"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+        .
+      </div>
+      <hr />
+      <br />
       <form>
-        <div className="row">
-          <div className="col">
-            <h1 style={{ marginBottom: "25px" }}>
-              <Logo />
-            </h1>
-            <strong>
-              <Logo />
-            </strong>{" "}
-            is a web application providing partial atomic charges of protein
-            structures from the{" "}
-            <a
-              href="https://onlinelibrary.wiley.com/doi/full/10.1002/pro.3289"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Protein Data Bank
-            </a>
-            . The charges are computed by the{" "}
-            <a
-              href="https://pubs.acs.org/doi/10.1021/acs.jctc.7b00118"
-              target="_blank"
-              rel="noreferrer"
-            >
-              semiempirical quantum mechanical methods GFN1-xTB
-            </a>{" "}
-            and reproduce the PBE0/TZVP/CM5 charges. Before computation of the
-            charges, hydrogens are added to the structure by{" "}
-            <a
-              href="https://almob.biomedcentral.com/articles/10.1186/s13015-022-00215-x"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Hydride
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.6b00049"
-              target="_blank"
-              rel="noreferrer"
-            >
-              MoleculeKit
-            </a>{" "}
-            at pH 7.2. The positions of the added hydrogens are optimized using
-            the{" "}
-            <a
-              href="https://onlinelibrary.wiley.com/doi/full/10.1002/anie.202004239"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GFN-FF force-field
-            </a>
-            . The details about the methodology and usage are described in the{" "}
-            <a
-              href="https://github.com/sb-ncbr/PDBCharges_website/wiki"
-              target="_blank"
-              rel="noreferrer"
-            >
-              manual
-            </a>
-            . This website is free and open to all users and there is no login
-            requirement. Source codes are freely available at{" "}
-            <a
-              href="https://github.com/sb-ncbr/PDBCharges_website"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            .
-          </div>
-        </div>
-        <hr />
-        <br />
         <div className="form-group col-sm-6 col-lg-3 pl-0">
           <label style={{ color: "black" }} htmlFor="title">
             <strong>PDB ID:</strong>
@@ -94,16 +85,14 @@ export default function Home() {
             placeholder="e.g. 1alf, 2pws"
           />
         </div>
-        <div className="form-group">
-          <button
-            type="submit"
-            className="btn btn-primary"
-            name="action"
-            value="get charges"
-          >
-            Get charges
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          name="action"
+          value="get charges"
+        >
+          Get charges
+        </button>
       </form>
       <hr />
       <div className="row">
@@ -234,7 +223,6 @@ export default function Home() {
       <hr />
       <ElixirSection />
       <hr />
-      <Footer />
-    </div>
+    </>
   );
 }

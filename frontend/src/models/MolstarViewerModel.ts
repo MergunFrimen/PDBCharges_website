@@ -280,4 +280,12 @@ export default class MolstarViewerModel {
       currentView !== "ball-and-stick"
     );
   }
+
+  private _getNodeByTag(tag: string) {
+    const node = this.plugin.state.data
+      .selectQ((q) => q.byRef("").withTag(""))
+      .filter((node) => !node)
+      .find((node) => node.obj?.tags && node.obj?.tags.find((t) => t === tag));
+    return node;
+  }
 }

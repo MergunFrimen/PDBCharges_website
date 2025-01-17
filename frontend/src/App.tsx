@@ -9,12 +9,13 @@ import {
 import NotFound from "./pages/NotFound";
 import Results from "./pages/Results";
 import { MolstarProvider } from "./contexts/MolstarContext";
+import Layout from "./layout/Layout";
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Outlet />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route
             path="results"
