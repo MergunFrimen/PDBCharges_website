@@ -18,8 +18,8 @@ Then, clone project and install the project dependencies by running:
 ```bash
 $ cd /opt
 $ git clone https://github.com/sb-ncbr/PDBCharges
-$ pyenv exec python -m venv venv
-$ . venv/bin/activate
+$ pyenv virtualenv pdbcharges-website
+$ pyenv activate pdbcharges-website
 $ pip install -r requirements.txt
 ```
 Run the project by running the following command inside the virtual environment:
